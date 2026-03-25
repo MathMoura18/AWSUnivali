@@ -6,10 +6,9 @@ import type { Container, ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; // Use slim para performance
 
 import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight } from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // Variantes de animação para os cards
 const cardVariants: Variants = {
@@ -186,20 +185,7 @@ return (
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-purple-900/50 pt-12 pb-8 px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-500 text-sm">© 2026 AWS Cloud Club Univali. Todos os direitos reservados.</p>
-          <div className="flex gap-6">
-            <a href="#" aria-label="GitHub" className="text-gray-400 hover:text-white transition-colors">
-                <FontAwesomeIcon icon={faGithub} size="xl" />
-            </a>
-            <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors">
-                <FontAwesomeIcon icon={faLinkedin} size="xl" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
