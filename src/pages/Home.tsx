@@ -10,6 +10,8 @@ import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight } from 'lucide
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+// HOME
+
 // Variantes de animação para os cards
 const cardVariants: Variants = {
   offscreen: { 
