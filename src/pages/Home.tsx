@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, ISourceOptions } from "@tsparticles/engine";
+import type { ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; // Use slim para performance
 
 import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight } from 'lucide-react';
