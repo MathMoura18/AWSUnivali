@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 const env = 'production';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
