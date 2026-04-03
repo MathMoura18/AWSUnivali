@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; // Use slim para performance
 
-import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight } from 'lucide-react';
+import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight, Space } from 'lucide-react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -133,6 +133,7 @@ return (
         </div>
 
       <Header />
+      <Space height={50}/>
 
     {/* Hero Section */}
     <section className="relative z-10 max-w-7xl mx-auto px-8 pt-20 text-center">

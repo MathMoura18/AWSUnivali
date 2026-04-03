@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 
-import { Rocket, Target, Heart } from 'lucide-react';
+import { Rocket, Target, Heart, Space } from 'lucide-react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -48,7 +48,8 @@ const About: React.FC = () => {
             </div>
 
             <Header />
-
+            <Space height={50}/>
+            
             <main className="relative z-10 pt-20">
                 {/* Hero Section - Sobre Nós */}
                 <section className="max-w-5xl mx-auto px-8 text-center mb-24">
