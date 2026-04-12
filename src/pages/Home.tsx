@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, type Variants } from 'framer-motion';
-
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { ISourceOptions } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim"; // Use slim para performance
 
 import { Cloud, Cpu, Database, Globe, Users, Calendar, ArrowRight, Space } from 'lucide-react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
-// HOME
+import ParticlesBackground from '../components/ParticlesBackground';
+import { Link } from 'react-router-dom';
 
 // Variantes de animação para os cards
 const cardVariants: Variants = {
@@ -30,101 +26,10 @@ const cardVariants: Variants = {
 };
 
 const Home: React.FC = () => {
-    const [ init, setInit ] = useState(false);
-
-    useEffect(() => {
-        initParticlesEngine(async (engine) => {
-        // loadSlim carrega os recursos básicos (estrelas, conexões, etc.)
-        await loadSlim(engine);
-        }).then(() => {
-        setInit(true);
-        });
-    }, []);
-
-    const particlesOptions: ISourceOptions = {
-        background: {
-        color: {
-            value: "#0a061a", // Fundo ultra-dark espacial
-        },
-        },
-        fpsLimit: 120,
-        interactivity: {
-        events: {
-            onClick: {
-            enable: true,
-            mode: "push", // Cria mais estrelas ao clicar
-            },
-            onHover: {
-            enable: true,
-            mode: "grab", // Cria "conexões" (teia) que seguem o mouse
-            },
-        },
-        modes: {
-            push: {
-            quantity: 4,
-            },
-            grab: {
-            distance: 200, // Distância da teia do mouse
-            links: {
-                opacity: 0.3, // Opacidade das conexões
-            },
-            },
-        },
-        },
-        particles: {
-        color: {
-            value: ["#ffffff", "#a855f7", "#60a5fa"], // Estrelas brancas, roxas e azuis
-        },
-        links: {
-            color: "#a855f7", // Cor das conexões
-            distance: 150,
-            enable: true, // Habilita a "rede" de constelações
-            opacity: 0.15,
-            width: 1,
-        },
-        move: {
-            direction: "none",
-            enable: true, // Estrelas se movem suavemente
-            outModes: {
-            default: "bounce",
-            },
-            random: true,
-            speed: 1, // Velocidade lenta e relaxante
-            straight: false,
-        },
-        number: {
-            density: {
-            enable: true,
-            },
-            value: 120, // Quantidade de estrelas
-        },
-        opacity: {
-            value: { min: 0.1, max: 0.8 }, // Brilho variável (cintilante)
-            animation: {
-            enable: true,
-            speed: 1,
-            sync: false,
-            },
-        },
-        shape: {
-            type: "circle",
-        },
-        size: {
-            value: { min: 1, max: 3 }, // Tamanhos variados
-        },
-        },
-        detectRetina: true,
-    };
 
 return (
     <div className="min-h-screen bg-[#0a061a] text-white font-sans selection:bg-purple-500/30">
-        {init && (
-            <Particles
-            id="tsparticles"
-            options={particlesOptions}
-            className="fixed inset-0 z-0" // Garante que fique no fundo e fixo
-            />
-        )}
+        <ParticlesBackground />
 
         {/* NEBULOSAS FIXAS (GRADIENTES BLUR) PARA PROFUNDIDADE */}
         <div className="fixed inset-0 z-0 pointer-events-none">
@@ -150,12 +55,16 @@ return (
             participe de workshops e impulsione sua carreira tech.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-[#0a061a] px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-purple-100 transition-all group">
-              Começar Jornada <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border border-purple-500/50 bg-purple-500/10 px-8 py-4 rounded-xl font-bold hover:bg-purple-500/20 transition-all">
-              Ver Agenda
-            </button>
+            <Link to="/login">
+              <button className="bg-white text-[#0a061a] px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-purple-100 transition-all group">
+                Começar Jornada <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+            <Link to="/agenda">
+              <button className="border border-purple-500/50 bg-purple-500/10 px-8 py-4 rounded-xl font-bold hover:bg-purple-500/20 transition-all">
+                Ver Agenda de Eventos
+              </button>
+            </Link>
           </div>
         </motion.div>
 

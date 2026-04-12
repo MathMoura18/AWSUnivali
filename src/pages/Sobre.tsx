@@ -1,45 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { ISourceOptions } from "@tsparticles/engine";
 
 import { Rocket, Target, Heart, Space } from 'lucide-react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ParticlesBackground from '../components/ParticlesBackground';
+import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
-    const [init, setInit] = useState(false);
-
-    useEffect(() => {
-        initParticlesEngine(async (engine) => {
-            await loadSlim(engine);
-        }).then(() => {
-            setInit(true);
-        });
-    }, []);
-
-    const particlesOptions: ISourceOptions = {
-        background: { color: { value: "#0a061a" } },
-        fpsLimit: 120,
-        particles: {
-            color: { value: ["#ffffff", "#a855f7"] },
-            links: { color: "#a855f7", distance: 150, enable: true, opacity: 0.1 },
-            move: { enable: true, speed: 0.6 },
-            number: { density: { enable: true }, value: 80 },
-            opacity: { value: { min: 0.1, max: 0.5 } },
-            size: { value: { min: 1, max: 2 } },
-        },
-        detectRetina: true,
-    };
 
     return (
         <div className="min-h-screen bg-[#0a061a] text-white font-sans selection:bg-purple-500/30">
-            {init && (
-                <Particles id="tsparticles" options={particlesOptions} className="fixed inset-0 z-0" />
-            )}
+            <ParticlesBackground />
 
             {/* Nebulosas de Fundo */}
             <div className="fixed inset-0 z-0 pointer-events-none">
@@ -130,9 +103,11 @@ const About: React.FC = () => {
                     <div className="p-12 rounded-3xl bg-gradient-to-b from-purple-900/30 to-transparent border border-purple-500/20">
                         <h2 className="text-3xl font-bold mb-6">Pronto para decolar?</h2>
                         <p className="text-gray-400 mb-8">Nossa comunidade está sempre aberta para novos exploradores.</p>
-                        <button className="bg-purple-600 hover:bg-purple-500 text-white px-10 py-4 rounded-full font-bold transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-                            Juntar-se ao Time
-                        </button>
+                        <Link to="/login">
+                            <button className="bg-purple-600 hover:bg-purple-500 text-white px-10 py-4 rounded-full font-bold transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                                Juntar-se ao Time
+                            </button>
+                        </Link>
                     </div>
                 </section>
             </main>
